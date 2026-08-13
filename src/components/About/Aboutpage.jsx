@@ -11,7 +11,7 @@ const Aboutpage = () => {
           <div className='maincontentleftabout'>
             <h2>About UIDAI</h2>
             <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Page-2.svg" id='imgdivvv' />
+                <img src="/imgs/Page-2.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -32,7 +32,7 @@ const Aboutpage = () => {
                 </section>
             </div></div>
             <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Group_8150.svg" id='imgdivvv' />
+                <img src="/imgs/Group_8150.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -56,8 +56,7 @@ const Aboutpage = () => {
             </div></div>
 
             <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Group_8151.svg
-                " id='imgdivvv' />
+                <img src="/imgs/Group_8151.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -81,7 +80,7 @@ const Aboutpage = () => {
                 </section>
             </div></div>
             <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Group_8164.svg" id='imgdivvv' />
+                <img src="/imgs/Group_8164.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -99,8 +98,7 @@ const Aboutpage = () => {
                 </section>
             </div></div>
         <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Group_8169.svg
-                " id='imgdivvv' />
+                <img src="/imgs/Group_8169.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -118,7 +116,7 @@ const Aboutpage = () => {
                 </section>
             </div></div>
              <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Group_8169.svg" id='imgdivvv' />
+                <img src="/imgs/Group_8169.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}
@@ -136,7 +134,7 @@ const Aboutpage = () => {
                 </section>
             </div></div>
         <div className='maincontentdiv'> <div id="updateadharoption">
-                <img src="/imgs/Icon_material-dashboard.svg" id='imgdivvv' />
+                <img src="/imgs/Icon_material-dashboard.svg" id='imgdivvv' alt="" />
                 <section id="twdiv">
                     <div>
                         {/* ✅ Arrow added in heading */}

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ImageSlider from './Imageslider';
 import { Link } from 'react-router-dom';
 const Optionnavbar = () => {
-  const [activeMenu, setActiveMenu] = useState(null);
+  const [, setActiveMenu] = useState(null);
 const [isOpen, setIsOpen] = useState(false);
   // Mega menu data
+  // eslint-disable-next-line no-unused-vars
   const megaMenuData = {
     myAadhaar: {
       title: "My Aadhaar",
