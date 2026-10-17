@@ -24,10 +24,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Shared layout tokens (same colours, only reused) */
 :root {
-  --nav-h: 70px;          /* #navheader height */
-  --subnav-h: 40px;       /* #optionnav height */
+  --nav-h: 70px;
+  --subnav-h: 40px;
   --c-navy: #02084d;
   --c-blue: #1aabd8;
   --c-midnight: #191970;
@@ -156,8 +155,7 @@ button {
   width: 100%;
   overflow: visible;
   z-index: 1000;
-  margin-top: 4.2rem;
-  top: 0;
+  top: var(--nav-h); /* was margin-top: 4.2rem — brittle */
   left: 0;
 }
 
@@ -169,7 +167,7 @@ button {
   padding: 0.2rem 0.5rem 0;
   margin: 0;
   gap: 0;
-  justify-self: center;
+  justify-content: center; /* was justify-self: center (no effect on flex children) */
   width: 100%;
 }
 
@@ -188,7 +186,6 @@ button {
   border-right: none;
 }
 
-/* Nav Links */
 #optionnav > ul > li > a {
   position: relative;
   display: flex;
@@ -213,7 +210,6 @@ button {
   border-bottom: 2px solid #f2f2f2;
 }
 
-/* Search Input */
 #optionnav ul li #search {
   width: 180px;
   background-color: transparent;
@@ -230,7 +226,6 @@ button {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Search Button */
 #optionnav ul li input[type="button"] {
   background: linear-gradient(to bottom right, var(--c-navy), var(--c-blue));
   color: #ffffff;
@@ -249,7 +244,6 @@ button {
   transform: scale(1.05);
 }
 
-/* Nav Item + Hamburger */
 .nav-item {
   position: relative;
 }
@@ -263,26 +257,23 @@ button {
 }
 
 #optionnav .btn div {
-  background: linear-gradient(to bottom right, var(--c-navy), var(--c-blue));
+  background-color: #fff; /* removed gradient — was overridden immediately */
 }
 
 #optionnav .btn div:nth-child(1) {
   width: 30px;
   height: 3px;
-  background-color: white;
 }
 
 #optionnav .btn div:nth-child(2) {
   width: 15px;
   height: 3px;
-  background-color: white;
   margin: 0.3rem 0;
 }
 
 #optionnav .btn div:nth-child(3) {
   width: 30px;
   height: 3px;
-  background-color: white;
 }
 
 /* =============================================================
@@ -328,21 +319,23 @@ button {
   margin: 0 0 0.75rem 1.25rem;
 }
 
-.mega-menu-column ul {
-  display: flex !important;
-  flex-direction: column !important;
+/* Scoped list reset — no longer needs !important */
+#optionnav .mega-menu-column ul {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: left;
-  height: auto !important;
+  height: auto;
+  align-items: stretch;
 }
 
-.mega-menu-column ul li {
-  display: block !important;
+#optionnav .mega-menu-column ul li {
+  display: block;
   list-style: none;
-  width: 100% !important;
-  flex: 0 0 auto !important;
+  width: 100%;
+  flex: 0 0 auto;
 }
 
 .mega-menu-column ul li a {
@@ -448,7 +441,6 @@ button {
   filter: invert(1);
 }
 
-/* Controls Bar */
 #slider-controls {
   position: absolute;
   bottom: 10px;
@@ -533,7 +525,7 @@ button {
   background-color: var(--c-light);
   height: 100%;
   width: 80%;
-  min-width: 470px;
+  min-width: 0; /* was 470px — caused overflow on phones */
   justify-self: center;
   justify-content: center;
   text-align: center;
@@ -664,14 +656,7 @@ button {
   padding-top: 0.75rem;
 }
 
-.maincontentleftabout #imgdivvv {
-  width: 15%;
-  height: 70px;
-  flex-shrink: 0;
-  margin: 0.5rem;
-  padding-top: 0.75rem;
-}
-
+.maincontentleftabout #imgdivvv,
 .maincontentlefteco #imgdivvv {
   width: 15%;
   height: 70px;
@@ -695,7 +680,6 @@ button {
   justify-content: center;
 }
 
-/* Text Slider Dots */
 .slider-dots-container {
   display: flex;
   align-items: center;
@@ -1076,211 +1060,7 @@ button {
 }
 
 /* =============================================================
-   17. RESPONSIVE — TABLET RANGE (769px – 992px)
-   ============================================================= */
-@media (max-width: 992px) {
-  #mainpage {
-    width: 92%;
-    min-width: 0;
-  }
-
-  .mega-menu { width: 95%; }
-
-  #videodiv,
-  #videodiv2 { width: 48%; }
-
-  .contactleft,
-  .contactleft div,
-  .contactleft #c1 { width: 90%; }
-
-  .footermain div 
-.footermain {
-  padding: 1rem;
-  height: auto;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  background: linear-gradient(to right, var(--c-navy), var(--c-blue));
-}
-
-.footermain div {
-  width: 25%;
-  text-align: left;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.footermain ul { padding-left: 0; }
-
-.footermain ul li {
-  list-style-type: none;
-  margin: 0.6rem 0;
-  color: white;
-}
-
-.footermain ul li ul {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.footermain ul li ul li {
-  margin: 0.3rem 0.5rem 0.3rem 0;
-}
-
-.footermain div select {
-  padding: 0.5rem 0.15rem;
-  outline: none;
-  border-radius: 5px;
-  max-width: 100%;
-}
-
-.footertwo {
-  padding: 1rem;
-  height: auto;
-  min-height: 20vh;
-  width: 100%;
-  background-color: var(--c-footer);
-  box-sizing: border-box;
-}
-
-.footertwo ul { padding-left: 0; }
-
-.footertwo ul li {
-  list-style-type: none;
-  color: white;
-  font-size: small;
-  margin: 0.3rem 0;
-}
-
-/* =============================================================
-   15. RESPONSIVE — IMAGE SLIDER
-   ============================================================= */
-@media (max-width: 768px) {
-  #slider {
-    height: 220px;
-    gap: 10px;
-    padding: 0.6rem 0;
-  }
-
-  #slider #imgss { height: 160px; }
-
-  #slider #lbtn,
-  #slider #rbtn {
-    width: 40px;
-    height: 40px;
-  }
-
-  #slider #lbtn img,
-  #slider #rbtn img {
-    width: 20px;
-    height: 20px;
-  }
-
-  #slider-controls {
-    gap: 12px;
-    padding: 0.5rem 0.9rem;
-    bottom: 5px;
-  }
-
-  #play-pause-btn {
-    width: 35px;
-    height: 35px;
-  }
-
-  #slide-counter {
-    font-size: 12px;
-    min-width: 45px;
-  }
-
-  #slider-dots .dot {
-    width: 8px;
-    height: 8px;
-  }
-
-  #slider-dots .dot.active {
-    width: 10px;
-    height: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  #slider {
-    height: 180px;
-    gap: 5px;
-  }
-
-  #slider #imgss {
-    width: 90%;
-    height: 140px;
-  }
-
-  #slider #lbtn,
-  #slider #rbtn {
-    width: 35px;
-    height: 35px;
-  }
-
-  #slider-controls {
-    gap: 10px;
-    padding: 0.4rem 0.75rem;
-  }
-
-  #play-pause-btn {
-    width: 32px;
-    height: 32px;
-  }
-
-  #slide-counter {
-    font-size: 11px;
-    min-width: 40px;
-  }
-}
-
-/* =============================================================
-   16. RESPONSIVE — TEXT SLIDER
-   ============================================================= */
-@media (max-width: 768px) {
-  .slider-section {
-    padding: 1.9rem 1.25rem;
-    min-height: 120px;
-  }
-
-  .slider-section h3 { font-size: 1.1rem; }
-
-  .slider-dots-container { padding: 0.9rem; }
-
-  .slider-dots { gap: 10px; }
-
-  .slider-dots .dot {
-    width: 10px;
-    height: 10px;
-  }
-
-  .slider-dots .dot.active { width: 28px; }
-}
-
-@media (max-width: 480px) {
-  .slider-section {
-    padding: 1.25rem 0.9rem;
-    min-height: 100px;
-  }
-
-  .slider-section h3 { font-size: 0.95rem; }
-
-  .slider-dots-container { padding: 0.75rem; }
-
-  .slider-dots { gap: 8px; }
-
-  .slider-dots .dot {
-    width: 10px;
-    height: 10px;
-  }
-
-  .slider-dots .dot.active { width: 26px; }
-}
-
-/* =============================================================
-   17. RESPONSIVE — TABLET RANGE (769px – 992px)
+   17. RESPONSIVE — TABLET RANGE (max-width: 992px)
    ============================================================= */
 @media (max-width: 992px) {
   #mainpage {
@@ -1307,19 +1087,17 @@ button {
    18. RESPONSIVE — MOBILE NAV + STACKING (max-width: 768px)
    ============================================================= */
 @media (max-width: 768px) {
-  /* ---- Mobile navigation drawer ---- */
   #details { display: none; }
 
   #optionnav {
-    background-color: #fff;
     background: none;
-    margin-top: 4.2rem;
+    top: var(--nav-h);
   }
 
   #optionnav .btn { display: block; }
 
   #optionnav ul {
-    position: fixed !important;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
@@ -1327,6 +1105,7 @@ button {
     max-width: 80vw;
     flex-direction: column;
     align-items: baseline;
+    justify-content: flex-start;
     background: linear-gradient(to right, var(--c-navy), var(--c-blue));
     margin-top: 0;
     float: none;
@@ -1361,14 +1140,12 @@ button {
     border-bottom: none;
   }
 
-  /* ---- Chatbot ---- */
   #bot .chatbox {
     width: 88vw;
     max-width: 300px;
     height: 65vh;
   }
 
-  /* ---- Main page ---- */
   #mainpage {
     width: 100%;
     min-width: 0;
@@ -1382,7 +1159,6 @@ button {
     flex: 1 1 40%;
   }
 
-  /* ---- Text slider ---- */
   .slider-main {
     min-width: 0;
     width: 100%;
@@ -1393,7 +1169,6 @@ button {
     height: 40px;
   }
 
-  /* ---- Video section ---- */
   #videosection #vnav { flex-wrap: wrap; }
 
   #vnav a {
@@ -1413,7 +1188,6 @@ button {
 
   #videodiv ul { margin-left: 0; }
 
-  /* ---- Mega menu ---- */
   .mega-menu {
     width: 92%;
     min-height: auto;
@@ -1434,7 +1208,6 @@ button {
     max-width: 100%;
   }
 
-  /* ---- Contact section ---- */
   .contactsection {
     flex-direction: column;
     padding: 0.75rem;
@@ -1446,7 +1219,6 @@ button {
   .contactleft div,
   .contactleft #c1 { width: 100%; }
 
-  /* ---- Footer ---- */
   .footermain { flex-direction: column; }
 
   .footermain div {
@@ -1459,7 +1231,6 @@ button {
 
   .footertwo { text-align: center; }
 
-  /* ---- Header ---- */
   #navheader img {
     width: 22%;
     margin: 0.5rem;
